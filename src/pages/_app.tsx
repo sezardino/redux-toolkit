@@ -1,11 +1,17 @@
+import { store } from "@/store";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import { Provider } from "react-redux";
+import { Header } from "components/ui";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="py-7 px-5">
-      <Component {...pageProps} />
-    </div>
+    <Provider store={store}>
+      <Header />
+      <main className="container mx-auto">
+        <Component {...pageProps} />
+      </main>
+    </Provider>
   );
 }
 
